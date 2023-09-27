@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Task 4</title>
+  </head>
+  <body>
+    <h2>Display Date and Time</h2>
+    <br>
+    <button
+      onclick="
+        getTodayDate();
+        "
+    >
+      show date
+    </button>
+    <br><br>
+    <div id="first-text-box"></div>
+    <button
+      onclick="
+        getFormattedDateTime();
+    "
+    >
+      show time
+    </button>
+    <div id="second-text-box"></div>
+    <script>
+      function getTodayDate() {
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, "0");
+        const day = today.getDate().toString().padStart(2, "0");
+        const formattedDate = `${day}/${months[month - 1]}/${year}`;
+        document.getElementById("first-text-box").innerHTML = formattedDate;
+      }
+      function getFormattedDateTime() {
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        const today = new Date();
+        const dayName = days[today.getDay()];
+        const monthName = months[today.getMonth()];
+        const day = today.getDate();
+        const year = today.getFullYear();
+        const hours = today.getHours().toString().padStart(2, "0");
+        const minutes = today.getMinutes().toString().padStart(2, "0");
+        const seconds = today.getSeconds().toString().padStart(2, "0");
+        const timeZoneOffset = today.getTimezoneOffset();
+        const timeZoneOffsetHours = Math.abs(Math.floor(timeZoneOffset / 60))
+          .toString()
+          .padStart(2, "0");
+        const timeZoneOffsetMinutes = (Math.abs(timeZoneOffset) % 60)
+          .toString()
+          .padStart(2, "0");
+        const timeZoneSign = timeZoneOffset >= 0 ? "-" : "+";
+        const timeZoneName = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const finAnswer = `${dayName} ${monthName} ${day} ${year} ${hours}:${minutes}:${seconds} GMT${timeZoneSign}${timeZoneOffsetHours}:${timeZoneOffsetMinutes} (${timeZoneName})`;
+        document.getElementById("second-text-box").innerHTML = finAnswer;
+      }
+    </script>
+  </body>
+</html>

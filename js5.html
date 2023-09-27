@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task-5</title>
+    <style>
+        .error {
+            color: rgb(219, 58, 58);
+            font-weight: bold;
+        }
+        .input-error {
+            border: 2px solid rgb(219, 58, 58);
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <form id="contactForm" style="padding-top: 10%;">
+            <table cellpadding="5">
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name"></td>
+                    <td><span id="nameError" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email"></td>
+                    <td><span id="emailError" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="url">URL:</label></td>
+                    <td><input type="url" id="url" name="url"></td>
+                    <td><span id="urlError" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><label for="message">Message:</label></td>
+                    <td><textarea id="message" name="message"></textarea></td>
+                    <td><span id="messageError" class="error"></span></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        contactForm.addEventListener("submit", function (event) {
+            let valid = true;
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const urlInput = document.getElementById("url");
+            const messageInput = document.getElementById("message");
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const urlError = document.getElementById("urlError");
+            const messageError = document.getElementById("messageError");
+            if (!nameInput.value) {
+                nameInput.classList.add("input-error");
+                nameError.textContent = "This field is required";
+                valid = false;
+            } else {
+                nameInput.classList.remove("input-error");
+                nameError.textContent = "";
+            }
+            if (!emailInput.value || !isValidEmail(emailInput.value)) {
+                emailInput.classList.add("input-error");
+                emailError.textContent = "A valid email address is required";
+                valid = false;
+            } else {
+                emailInput.classList.remove("input-error");
+                emailError.textContent = "";
+            }
+            if (!urlInput.value || !isValidUrl(urlInput.value)) {
+                urlInput.classList.add("input-error");
+                urlError.textContent = "A valid url is required";
+                valid = false;
+            } else {
+                urlInput.classList.remove("input-error");
+                urlError.textContent = "";
+            }
+            if (!messageInput.value) {
+                messageInput.classList.add("input-error");
+                messageError.textContent = "This field is required";
+                valid = false;
+            } else {
+                messageInput.classList.remove("input-error");
+                messageError.textContent = "";
+            }
+            if (!valid) {
+                event.preventDefault(); 
+            }
+        });
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        function isValidUrl(url) {
+            try {
+                new URL(url);
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

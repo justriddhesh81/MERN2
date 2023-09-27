@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS Task-6</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        integrity="sha384-..." crossorigin="anonymous">
+    <style>
+        label {
+            padding-top: 3%;
+        }
+        table {
+            width: 500px;
+            background-color: rgb(240, 239, 239);
+            text-align: left;
+        }
+        .btn{
+            color: white; 
+            background-color: #dc3545;
+            border: 1px solid #dc3545;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            width: 80%;
+            transition: all 0.2s ease-in-out;
+        }
+        .btn:hover {
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+            transform: scale(1.1);
+        }
+        .btn:active {
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <center>
+            <div class="row">
+                <form class="form needs-validation" method="post" style="margin-top: 2%;" novalidate>
+                    <table cellpadding="5">
+                        <tr>
+                            <th>
+                                <label class="form-label me-3" for="name">Name</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="fname" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                        Name is required.
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label class="form-label me-3" for="name">Email</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group has-validation">
+                                    <input type="text" class="form-control" id="email" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                        Email is required.
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label class="form-label me-3" for="name">Password</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="input-group has-validation">
+                                    <input type="password" class="form-control" id="fname" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                        Password is required.
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label class="form-label me-3" for="name">Hobbies</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" class="form-control" id="fname">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" style="padding-top: 20px;">
+                                <button type="submit" class="btn">
+                                    Submit
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </center>
+    </div>
+    <script>
+        (() => {
+          'use strict'
+          const forms = document.querySelectorAll('.needs-validation')
+          Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+              form.classList.add('was-validated')
+            }, false)
+          })
+        })()
+    </script>
+</body>
+</html>

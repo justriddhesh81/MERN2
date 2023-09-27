@@ -1,0 +1,29 @@
+#topmost-row{
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 400;
+}
+.navbar{
+    background-color: rgb(165, 164, 164);
+    --bs-navbar-padding-y: 0.75PX;
+}
+.navbar-nav{
+    flex-direction: row;
+}
+li{
+    padding-left: 80px; 
+}
+.navbar a{
+    color: white;
+    line-height: 90%;    
+}
+.full-height-column{
+    background-color: rgb(88, 87, 87);
+    color: white;
+    text-align: center;
+    width: 15%;
+    height: 88vh;
+    float: right;
+}

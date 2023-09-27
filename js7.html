@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Task-7</title>
+    <style>
+        #train {
+            width: 400px;
+            height: 200px;
+            position: relative;
+        }
+        .track {
+            width: 100%;
+            float: left;
+        }
+        .start {
+            padding: 4px 20px;
+            cursor: pointer;
+            border: 2px solid rgb(40, 38, 38);
+            border-radius: 10%;
+        }
+        .stop {
+            padding: 4px 20px;
+            cursor: pointer;
+            border: 2px solid rgb(40, 38, 38);
+            border-radius: 10%;
+        }
+        .control {
+            text-align: center;
+        }
+        h2{
+            color: rgb(21, 21, 130);
+        }
+        .screen {
+            text-align: center;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="track" style="padding-top: 10%;">
+        <img id="train" src="./train1.png" />
+    </div>
+    <div class="control" style="padding-top: 20%;">
+        <h2>Click the following buttons to handle animation</h2>
+        <span class="start" onclick="return startTrain();">Start</span>
+        <span class="stop" onclick="return stopTrain();">Stop</span>
+    </div>
+    <script>
+        let running_status = "stop";
+        let moving_type = "left";
+        let starter = 0;
+        let race = 0;
+        let run;
+        engine();
+        function engine() {
+            run = setInterval(function () {
+                if (running_status == "start") {
+                    let control = (race - starter) * 20;
+                    let reached = control / 5;
+                    if (moving_type == "left") {
+                        train.style.left = reached + "px";
+                    } else {
+                        train.style.right = reached + "px";
+                    }
+                    if (reached > 1200) {
+                        if (moving_type == "left") {
+                            train.style.float = "right";
+                            train.style.left = "initial";
+                            moving_type = "right";
+                        } else {
+                            train.style.float = "left";
+                            moving_type = "left";
+                            train.style.right = "initial";
+                        }
+                        starter = 0;
+                        race = 0;
+                    }
+                    race++;
+                }
+            }, 20);
+        }
+        function startTrain() {
+            running_status = "start";
+        }
+        function stopTrain() {
+            running_status = "stop";
+        }
+    </script>
+</body>
+</html>
